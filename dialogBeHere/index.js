@@ -59,8 +59,8 @@ const handlers = {
           The price for the trip is exceeding you’re set limit for the auto-book function. 
           Let’s confirm the ride together. 
           The fastest way is to go by Taxi. I can schedule a ride with MyTaxi for 35€.
-          Should I book it?
         `);
+        this.response.listen('Should I book it?');
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent': function () {
@@ -73,10 +73,10 @@ const handlers = {
     'AMAZON.YesIntent': function () {
       
       fetch('https://sleepy-gorge-54251.herokuapp.com/alexa/add_transport', {
-        method: 'POST', // or 'PUT'
-        headers:{
-          'Content-Type': 'application/json'
-        }
+         method: 'POST', // or 'PUT'
+         headers:{
+           'Content-Type': 'application/json'
+         }
       }).then(res => res.json())
       .then(response => console.log('Success:', JSON.stringify(response)))
       .catch(error => console.error('Error:', error));
