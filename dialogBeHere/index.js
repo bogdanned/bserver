@@ -72,6 +72,15 @@ const handlers = {
     },
     'AMAZON.YesIntent': function () {
       
+      fetch('https://sleepy-gorge-54251.herokuapp.com/alexa/add_transport', {
+        method: 'POST', // or 'PUT'
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
+
       this.response.speak(`
         The taxi will be here in 15 minutes. 
         I suggest we reschedule the 30 minute call with Mr Samwers, so you can use your time more efficient.
