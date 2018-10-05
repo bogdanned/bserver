@@ -10,7 +10,6 @@
 
 'use strict';
 const Alexa = require('alexa-sdk');
-
 //=========================================================================================================================================
 //TODO: The items below this comment need your attention.
 //=========================================================================================================================================
@@ -24,6 +23,7 @@ const GET_FACT_MESSAGE = "Here's your fact: ";
 const HELP_MESSAGE = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';
+
 
 //=========================================================================================================================================
 //TODO: Replace this data with your own.  You can find translations of this data at http://github.com/alexa/skill-sample-node-js-fact/data
@@ -72,15 +72,6 @@ const handlers = {
     },
     'AMAZON.YesIntent': function () {
       
-      fetch('https://sleepy-gorge-54251.herokuapp.com/alexa/add_transport', {
-         method: 'POST', // or 'PUT'
-         headers:{
-           'Content-Type': 'application/json'
-         }
-      }).then(res => res.json())
-      .then(response => console.log('Success:', JSON.stringify(response)))
-      .catch(error => console.error('Error:', error));
-
       this.response.speak(`
         The taxi will be here in 15 minutes. 
         I suggest we reschedule the 30 minute call with Mr Samwers, so you can use your time more efficient.
