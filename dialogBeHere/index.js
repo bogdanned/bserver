@@ -58,7 +58,8 @@ const handlers = {
           You are going to the Idea Lab at 12:00 am in Vallendar. Estimated trip duration is 45 minutes. 
           The price for the trip is exceeding you’re set limit for the auto-book function. 
           Let’s confirm the ride together. 
-          The fastest way is to go by Taxi. I can schedule a ride with MyTaxi for 35€.
+          The fastest way is with the e.go Mover. 
+          I can schedule a ride for 15,5€.
         `);
         this.response.listen('Should I book it?');
         this.emit(':responseReady');
@@ -73,8 +74,9 @@ const handlers = {
     'AMAZON.YesIntent': function () {
       
       this.response.speak(`
-        The taxi will be here in 15 minutes. 
-        I suggest we reschedule the 30 minute call with Mr Samwers, so you can use your time more efficient.
+        The Mover will be here in 15 minutes. Ocupancy and noise level in the mover are low.
+        Traffic levels are moderate.
+        I suggest we reschedule call with Mr Samwers and save up 30 minutes. 
       `);
       this.emit(':responseReady');
     },
@@ -98,3 +100,4 @@ exports.handler = function (event, context, callback) {
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
+
