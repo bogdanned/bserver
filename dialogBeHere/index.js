@@ -58,11 +58,26 @@ const handlers = {
           You are going to the Idea Lab at 12:00 am in Vallendar. Estimated trip duration is 45 minutes. 
           The price for the trip is exceeding you’re set limit for the auto-book function. 
           Let’s confirm the ride together. 
-          The fastest way is with the e.go Mover. 
+          The fastest way is with the eGo Mover. 
           I can schedule a ride for 15,5€.
         `);
         this.response.listen('Should I book it?');
         this.emit(':responseReady');
+    },
+    'cheaperIntent': function () {
+      this.response.speak(`
+        Let me check. I have found a seat on the Koln to Vallender speed train at 14:00.
+        You can combine that with a comute to the university using ecar. 
+        Total cost is 13 euros.
+      `);
+      this.response.listen('Should I book it?');
+      this.emit(':responseReady');
+    },
+    'reCall': function () {
+      this.response.speak(`
+        I will reach him and reschedule the call. Have a great trip!
+      `);
+      this.emit(':responseReady');
     },
     'AMAZON.HelpIntent': function () {
         const speechOutput = HELP_MESSAGE;
@@ -74,10 +89,11 @@ const handlers = {
     'AMAZON.YesIntent': function () {
       
       this.response.speak(`
-        The Mover will be here in 15 minutes. Ocupancy and noise level in the mover are low.
+        Ok. The Mover will be here in 15 minutes. Ocupancy and noise level in the mover are low.
         Traffic levels are moderate.
         I suggest we reschedule call with Mr Samwers and save up 30 minutes. 
       `);
+      this.response.listen('Should I take care of it?');
       this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
